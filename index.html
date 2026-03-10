@@ -53,12 +53,23 @@ color:#777;
 
 <body>
 
+<audio id="bgm" loop>
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+document.addEventListener("click", function(){
+  document.getElementById("bgm").play();
+}, { once: true });
+
+</script>
 <div class="container">
 
 <h1>돌잔치에 초대합니다 🎉</h1>
 
 <p>
-사랑하는 ○○의 첫 생일을 맞아<br>
+사랑하는 하운이의 첫 생일을 맞아<br>
 소중한 분들을 초대합니다.
 </p>
 
@@ -66,9 +77,11 @@ color:#777;
 
 <div class="info">
 
-📅 2026년 4월 10일 토요일<br>
-⏰ 오후 5시<br>
-📍 ○○호텔
+📅 2026년 4월 18일 토요일<br>
+⏰ 11:30 ~ 14:00<br>
+📍 경기소 수원시 권선구 경수대로 270 터미널동 3층<br>
+   마이어스 수원점<br>
+   연회장 : R1
 
 </div>
 
@@ -109,7 +122,7 @@ height="250"
 style="border:0"
 loading="lazy"
 allowfullscreen
-src="https://maps.google.com/maps?q=seoul&t=&z=13&ie=UTF8&iwloc=&output=embed">
+src="https://maps.google.com/maps?q=마이어스수원점&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
 </div>
