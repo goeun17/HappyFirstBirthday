@@ -18,6 +18,10 @@ overflow-x:hidden;
 padding:40px 20px;
 }
 
+h1{
+font-size:28px;
+}
+
 .photo{
 width:250px;
 border-radius:20px;
@@ -27,14 +31,14 @@ margin:20px 0;
 .slider{
 position:relative;
 max-width:340px;
-height:340px;
+height:320px;
 margin:auto;
 overflow:hidden;
 }
 
 .slide{
 width:100%;
-height:340px;
+height:320px;
 object-fit:cover;
 display:none;
 border-radius:20px;
@@ -50,44 +54,19 @@ border:none;
 font-size:24px;
 padding:10px;
 border-radius:50%;
-cursor:pointer;
 }
 
-.prev{left:10px;}
-.next{right:10px;}
-
-.dots{
-margin-top:10px;
-}
-
-.dot{
-height:10px;
-width:10px;
-margin:3px;
-background:#ccc;
-border-radius:50%;
-display:inline-block;
-cursor:pointer;
-}
-
-.active{
-background:#ff8da1;
-}
+.prev{ left:10px; }
+.next{ right:10px; }
 
 button{
 margin-top:20px;
-padding:12px 25px;
+padding:10px 20px;
 border:none;
-border-radius:25px;
+border-radius:20px;
 background:#ff8da1;
 color:white;
 font-size:16px;
-cursor:pointer;
-}
-
-.share{
-background:#ffe812;
-color:black;
 }
 
 .heart{
@@ -104,26 +83,6 @@ opacity:0;
 }
 }
 
-.modal{
-display:none;
-position:fixed;
-z-index:10;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-}
-
-.modal img{
-max-width:90%;
-max-height:80vh;
-object-fit:contain;
-border-radius:10px;
-}
-
 </style>
 </head>
 
@@ -131,22 +90,14 @@ border-radius:10px;
 
 <div class="container">
 
-<h1>이하운의 첫 돌잔치에<br>초대합니다 🎉</h1>
+<h1>돌잔치에 초대합니다 🎉</h1>
 
 <p>
-사랑하는 하운이의 첫 생일을 맞아<br>
+사랑하는 ○○의 첫 생일을 맞아<br>
 소중한 분들을 초대합니다.
 </p>
 
 <img src="baby.jpg" class="photo">
-
-<br><br>
-
-📅 2026년 4월 18일 토요일<br>
-⏰ 11:30 ~ 14:00<br>
-📍 경기소 수원시 권선구 경수대로 270 터미널동 3층<br>
-   마이어스 수원점<br>
-   연회장 : R1
 
 <h2>우리 아기 사진</h2>
 
@@ -179,21 +130,13 @@ border-radius:10px;
 
 </div>
 
-<div class="dots" id="dots"></div>
-
 <button onclick="toggleMusic()">🎵 음악 ON / OFF</button>
-
-<br>
-
-<button class="share" onclick="shareLink()">📤 초대장 공유하기</button>
 
 <br><br>
 
-📅 2026년 4월 18일 토요일<br>
-⏰ 11:30 ~ 14:00<br>
-📍 경기소 수원시 권선구 경수대로 270 터미널동 3층<br>
-   마이어스 수원점<br>
-   연회장 : R1
+📅 2026년 4월 10일<br>
+⏰ 오후 5시<br>
+📍 ○○호텔
 
 <br><br>
 
@@ -205,27 +148,9 @@ height="250"
 style="border:0"
 loading="lazy"
 allowfullscreen
-src="https://maps.google.com/maps?q=마이어스수원점&t=&z=13&ie=UTF8&iwloc=&output=embed">
+src="https://maps.google.com/maps?q=seoul&t=&z=13&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
-<div style="display:flex; justify-content:center; gap:10px; margin-top:15px;">
-
-<a href="https://map.kakao.com/link/to/마이어스수원점,37.2497718,127.0217399" target="_blank">
-<button style="background:#FEE500;color:black;">
-📍 카카오맵
-</button>
-</a>
-
-<a href="https://map.naver.com/v5/search/마이어스수원점" target="_blank">
-<button style="background:#03C75A;color:white;">
-📍 네이버지도
-</button>
-</a>
-
-</div>
-
-<div id="modal" class="modal" onclick="closeModal()">
-<img id="modalImg">
 </div>
 
 <audio id="bgm" loop>
@@ -234,29 +159,9 @@ src="https://maps.google.com/maps?q=마이어스수원점&t=&z=13&ie=UTF8&iwloc=
 
 <script>
 
+// 슬라이드
 let slideIndex=0;
 let slides=document.getElementsByClassName("slide");
-let dotsContainer=document.getElementById("dots");
-let slideTimer;
-
-/* 점 생성 */
-
-for(let i=0;i<slides.length;i++){
-
-let dot=document.createElement("span");
-dot.className="dot";
-
-dot.onclick=function(){
-slideIndex=i;
-showSlide(slideIndex);
-resetAutoSlide();
-};
-
-dotsContainer.appendChild(dot);
-
-}
-
-/* 슬라이드 표시 */
 
 function showSlide(n){
 
@@ -267,47 +172,26 @@ for(let i=0;i<slides.length;i++){
 slides[i].style.display="none";
 }
 
-let dots=document.getElementsByClassName("dot");
-
-for(let i=0;i<dots.length;i++){
-dots[i].classList.remove("active");
-}
-
 slides[slideIndex].style.display="block";
-dots[slideIndex].classList.add("active");
 
 }
-
-/* 슬라이드 이동 */
 
 function changeSlide(n){
 slideIndex+=n;
 showSlide(slideIndex);
-resetAutoSlide();
 }
-
-/* 자동 슬라이드 */
 
 function autoSlide(){
 slideIndex++;
 showSlide(slideIndex);
 }
 
-function startAutoSlide(){
-slideTimer=setInterval(autoSlide,3000);
-}
-
-function resetAutoSlide(){
-clearInterval(slideTimer);
-startAutoSlide();
-}
-
-startAutoSlide();
+setInterval(autoSlide,2500);
 
 showSlide(slideIndex);
 
-/* 스와이프 */
 
+// 스와이프
 let startX=0;
 
 document.querySelector(".slider").addEventListener("touchstart",function(e){
@@ -323,30 +207,8 @@ if(endX-startX>50){changeSlide(-1);}
 
 });
 
-/* 사진 확대 */
 
-document.querySelectorAll(".slide").forEach(function(img){
-
-img.onclick=function(){
-
-clearInterval(slideTimer);
-
-document.getElementById("modal").style.display="flex";
-document.getElementById("modalImg").src=this.src;
-
-};
-
-});
-
-function closeModal(){
-
-document.getElementById("modal").style.display="none";
-resetAutoSlide();
-
-}
-
-/* 음악 */
-
+// 음악
 let music=document.getElementById("bgm");
 
 function toggleMusic(){
@@ -359,28 +221,8 @@ music.pause();
 
 }
 
-/* 공유 */
 
-function shareLink(){
-
-if(navigator.share){
-
-navigator.share({
-title:'돌잔치 초대장',
-text:'우리 아기의 돌잔치에 초대합니다 🎉',
-url:window.location.href
-});
-
-}else{
-
-prompt("이 링크를 복사하세요",window.location.href);
-
-}
-
-}
-
-/* 하트 */
-
+// 하트 애니메이션
 setInterval(createHeart,500);
 
 function createHeart(){
@@ -394,7 +236,9 @@ heart.style.animationDuration=(Math.random()*3+2)+"s";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{heart.remove();},5000);
+setTimeout(()=>{
+heart.remove();
+},5000);
 
 }
 
