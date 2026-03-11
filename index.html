@@ -147,8 +147,8 @@ border-radius:10px;
 
 📅 2026년 4월 18일 토요일<br>
 ⏰ 11:30 ~ 14:00<br>
-📍 경기도 수원시 권선구 경수대로 270 터미널동 3층<br>
-   마이어스 수원점<br>
+📍 경기도 수원시 권선구 경수대로 270<br>
+   터미널동 3층 마이어스 수원점<br>
    연회장 : R1
 
 <h2>우리 아기 사진</h2>
@@ -189,13 +189,15 @@ border-radius:10px;
 <br>
 
 <button class="share" onclick="shareLink()">📤 초대장 공유하기</button>
+<button onclick="shareInvite()">📤 공유하기</button>
+<button onclick="copyLink()">🔗 링크복사</button>
 
 <br><br>
 
 📅 2026년 4월 18일 토요일<br>
 ⏰ 11:30 ~ 14:00<br>
-📍 경기소 수원시 권선구 경수대로 270 터미널동 3층<br>
-   마이어스 수원점<br>
+📍 경기도 수원시 권선구 경수대로 270<br>
+   터미널동 3층 마이어스 수원점<br>
    연회장 : R1
 
 <br><br>
@@ -381,6 +383,24 @@ prompt("이 링크를 복사하세요",window.location.href);
 }
 
 }
+
+function shareInvite() {
+  if (navigator.share) {
+    navigator.share({
+      title: "돌잔치 초대장",
+      text: "우리 아이 돌잔치에 초대합니다.",
+      url: window.location.href
+    });
+  } else {
+    copyLink();
+  }
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href);
+  alert("초대장 링크가 복사되었습니다!");
+}
+
 
 /* 하트 */
 
