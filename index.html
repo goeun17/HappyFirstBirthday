@@ -188,9 +188,7 @@ border-radius:10px;
 
 <br>
 
-<button class="share" onclick="shareLink()">📤 초대장 공유하기</button>
-<button onclick="shareInvite()">📤 공유하기</button>
-<button onclick="copyLink()">🔗 링크복사</button>
+<button class="share" onclick="copyLink()">🔗 초대장 링크 복사</button>
 
 <br><br>
 
@@ -365,36 +363,6 @@ music.pause();
 }
 
 /* 공유 */
-
-function shareLink(){
-
-if(navigator.share){
-
-navigator.share({
-title:'돌잔치 초대장',
-text:'우리 아기의 돌잔치에 초대합니다 🎉',
-url:window.location.href
-});
-
-}else{
-
-prompt("이 링크를 복사하세요",window.location.href);
-
-}
-
-}
-
-function shareInvite() {
-  if (navigator.share) {
-    navigator.share({
-      title: "돌잔치 초대장",
-      text: "우리 아이 돌잔치에 초대합니다.",
-      url: window.location.href
-    });
-  } else {
-    copyLink();
-  }
-}
 
 function copyLink() {
   navigator.clipboard.writeText(window.location.href);
